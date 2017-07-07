@@ -216,6 +216,3 @@ class ClusterKeywords:
             )
 
         provision_cluster(cluster_config, cbs_config, sg_config)
-
-        # verify running services are the expected versions
-        self.verify_cluster_versions(cluster_config, server_version, sync_gateway_version)

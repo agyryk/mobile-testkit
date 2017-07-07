@@ -77,6 +77,10 @@ def pytest_addoption(parser):
                      action="store_true",
                      help="If set, will enable SSL communication between server and Sync Gateway")
 
+    parser.addoption("--sequoia",
+                     action="store_true",
+                     help="If set, the tests will use a cluster provisioned by sequoia")
+
 
 # This will be called once for the at the beggining of the execution in the 'tests/' directory
 # and will be torn down, (code after the yeild) when all the test session has completed.
@@ -96,6 +100,7 @@ def params_from_base_suite_setup(request):
     race_enabled = request.config.getoption("--race")
     cbs_ssl = request.config.getoption("--server-ssl")
     xattrs_enabled = request.config.getoption("--xattrs")
+    use_sequoia = request.config.getoption("--sequoia")
 
     if xattrs_enabled and version_is_binary(sync_gateway_version):
         check_xattr_support(server_version, sync_gateway_version)
@@ -136,11 +141,15 @@ def params_from_base_suite_setup(request):
 
     sg_config = sync_gateway_config_path_for_mode("sync_gateway_default_functional_tests", mode)
 
-    # Skip provisioning if user specifies '--skip-provisoning'
-    if not skip_provisioning:
-        cluster_helper = ClusterKeywords()
+    # Skip provisioning if user specifies '--skip-provisoning' or '--sequoia'
+    should_provision = True
+    if skip_provisioning or use_sequoia:
+        should_provision = False
+
+    cluster_utils = ClusterKeywords()
+    if should_provision:
         try:
-            cluster_helper.provision_cluster(
+            cluster_utils.provision_cluster(
                 cluster_config=cluster_config,
                 server_version=server_version,
                 sync_gateway_version=sync_gateway_version,
@@ -151,6 +160,13 @@ def params_from_base_suite_setup(request):
             logging_helper = Logging()
             logging_helper.fetch_and_analyze_logs(cluster_config=cluster_config, test_name=request.node.name)
             raise
+
+    # Hit this intalled running services to verify the correct versions are installed
+    cluster_utils.verify_cluster_versions(
+        cluster_config,
+        expected_server_version=server_version,
+        expected_sync_gateway_version=sync_gateway_version
+    )
 
     # Load topology as a dictionary
     cluster_utils = ClusterKeywords()
