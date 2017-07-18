@@ -5,7 +5,7 @@
 
   tasks:
   # Remove Couchbase Server
-  #- include: tasks/remove-couchbase-server.yml
+  # - include: tasks/remove-couchbase-server.yml
 
   # Remove sync_gateway
   - include: tasks/remove-sync-gateway.yml
