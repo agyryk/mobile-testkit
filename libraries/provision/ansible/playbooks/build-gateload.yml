@@ -7,7 +7,7 @@
     sudo: true
 
   - name: GATELOAD | Symlink gateload into /usr/local/bin
-    file: src=/opt/go/bin/gateload dest=/usr/local/bin/gateload owner=centos group=centos state=link
+    file: src=/opt/go/bin/gateload dest=/usr/local/bin/gateload owner=root group=root state=link
     sudo: true
 
   - name: GATELOAD | Sysctl file to increase available port range for outgoing socket connections
