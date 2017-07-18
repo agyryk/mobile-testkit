@@ -5,7 +5,7 @@
 
   tasks:
   # Remove Couchbase Server
-  - include: tasks/remove-couchbase-server.yml
+  #- include: tasks/remove-couchbase-server.yml
 
   # Remove sync_gateway
   - include: tasks/remove-sync-gateway.yml
@@ -24,5 +24,5 @@
     wait_for: port=4985 delay=1 state=stopped
 
   # Check no servers are running
-  - name: ALL | verify no servers not listening on port 8081
-    wait_for: port=8091 delay=1 state=stopped
+  #- name: ALL | verify no servers not listening on port 8081
+  #  wait_for: port=8091 delay=1 state=stopped
