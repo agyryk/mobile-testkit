@@ -38,14 +38,13 @@ def run_gateload_perf_test(gen_gateload_config, test_id, gateload_params, delay_
 
     print("Running perf test against cluster: {}".format(cluster_config))
     ansible_runner = AnsibleRunner(cluster_config)
-
+    '''
     # Install + configure telegraf
     status = ansible_runner.run_ansible_playbook("install-telegraf.yml")
     if status != 0:
         raise ProvisioningError("Failed to install telegraf")
-
+    '''
     test_run_id = "{}_{}".format(test_id, time.strftime("%Y-%m-%d-%H-%M-%S"))
-
     # Create test results directory
     os.makedirs("testsuites/syncgateway/performance/results/{}".format(test_run_id))
 
