@@ -1,0 +1,56 @@
+{ "load_generators": [{
+        "ip":"172.23.100.250",
+        "name": "lg1"
+    }],
+  "couchbase_servers": [{
+        "ip":"172.23.100.204",
+        "name": "cb1"
+    },{
+        "ip":"172.23.100.205",
+        "name": "cb2"
+    },{
+        "ip":"172.23.100.206",
+        "name": "cb3"
+    },{
+        "ip":"172.23.100.207",
+        "name": "cb4"
+    }],
+  "sync_gateways": [{
+        "ip":"172.23.100.190",
+        "name": "sg1"
+    },{
+        "ip":"172.23.100.191",
+        "name": "sg2"
+    },{
+        "ip":"172.23.100.192",
+        "name": "sg3"
+    }],
+  "environment": {
+    "xattrs_enabled": false,
+    "cbs_ssl_enabled": false
+  },
+  "hosts":[{
+        "ip":"172.23.100.204",
+        "name": "host1"
+  },{
+        "ip":"172.23.100.205",
+        "name": "host2"
+  },{
+        "ip":"172.23.100.206",
+        "name": "host3"
+  },{
+        "ip":"172.23.100.207",
+        "name": "host4"
+  },{
+        "ip":"172.23.100.190",
+        "name": "host5"
+  },{
+        "ip":"172.23.100.191",
+        "name": "host6"
+  },{
+        "ip":"172.23.100.192",
+        "name": "host7"
+  }],
+  "load_balancers":[],
+  "sg_accels":[]
+}
