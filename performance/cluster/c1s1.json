@@ -1,0 +1,26 @@
+{ "load_generators": [{
+        "ip":"172.23.100.190",
+        "name": "lg1"
+    }],
+  "couchbase_servers": [{
+        "ip":"172.23.100.204",
+        "name": "cb1"
+    }],
+  "sync_gateways": [{
+        "ip":"172.23.100.205",
+        "name": "sg1"
+    }],
+  "environment": {
+    "xattrs_enabled": false,
+    "cbs_ssl_enabled": false
+  },
+  "hosts":[{
+        "ip":"172.23.100.204",
+        "name": "host1"
+  },{
+        "ip":"172.23.100.205",
+        "name": "host2"
+  }],
+  "load_balancers":[],
+  "sg_accels":[]
+}

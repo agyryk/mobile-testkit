@@ -1,0 +1,26 @@
+[pool]
+ma1 ansible_host=172.23.100.204
+ma2 ansible_host=172.23.100.205
+
+[couchbase_servers]
+cb1 ansible_host=172.23.100.204
+
+[sync_gateways]
+sg1 ansible_host=172.23.100.205
+
+[load_generators]
+lg1 ansible_host=172.23.100.190
+
+[load_balancers]
+
+[webhook_ip]
+tf1 ansible_host=172.23.100.205
+
+[environment]
+cbs_ssl_enabled=False
+xattrs_enabled=False
+
+[all:vars]
+ansible_connection=ssh
+ansible_ssh_user=root
+ansible_ssh_pass=couchbase
