@@ -8,17 +8,17 @@ ma6 ansible_host=172.23.100.191
 ma7 ansible_host=172.23.100.192
 ma6 ansible_host=172.23.100.193
 
-[couchbase_servers]
-cb1 ansible_host=172.23.100.204
-cb2 ansible_host=172.23.100.205
-cb3 ansible_host=172.23.100.206
-cb4 ansible_host=172.23.100.207
-
 [sync_gateways]
-sg1 ansible_host=172.23.100.190
-sg2 ansible_host=172.23.100.191
-sg3 ansible_host=172.23.100.192
-sg4 ansible_host=172.23.100.193
+sg1 ansible_host=172.23.100.204
+sg2 ansible_host=172.23.100.205
+sg3 ansible_host=172.23.100.206
+sg4 ansible_host=172.23.100.207
+
+[couchbase_servers]
+cb1 ansible_host=172.23.100.190
+cb2 ansible_host=172.23.100.191
+cb3 ansible_host=172.23.100.192
+cb4 ansible_host=172.23.100.193
 
 [load_generators]
 lg1 ansible_host=172.23.100.250
@@ -26,7 +26,7 @@ lg1 ansible_host=172.23.100.250
 [load_balancers]
 
 [webhook_ip]
-tf1 ansible_host=172.23.100.190
+tf1 ansible_host=172.23.100.204
 
 [environment]
 cbs_ssl_enabled=False
